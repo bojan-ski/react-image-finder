@@ -1,10 +1,15 @@
+import { AppProvider } from "./context"
+import ImgGallery from "./components/ImgGallery"
+import ImgSearch from "./components/ImgSearch"
 
 const App = () => {
-
   return (
-    <>
-      <h1>Hello World</h1>
-    </>
+    <AppProvider>
+      <>
+        <ImgSearch />
+        <ImgGallery />
+      </>
+    </AppProvider>
   )
 }
 
