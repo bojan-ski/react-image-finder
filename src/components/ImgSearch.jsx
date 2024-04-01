@@ -1,11 +1,29 @@
-import { useGlobalContext } from "../context";
+
 
 const ImgSearch = () => {
-    const {hello} = useGlobalContext() 
+    const handleSubmit = e => {
+        e.preventDefault()
 
-    console.log(hello);
+        const searchTerm = e.target.elements[0].value.trim()
+
+        if(!searchTerm) return
+
+        console.log(searchTerm);
+    }
+
   return (
-    <div>ImgSearch</div>
+    <div>
+        <h1>
+            Image Finder
+        </h1>
+
+        <form className="search-form" onSubmit={handleSubmit}>
+            <input type="text" className="form-input" name="search" placeholder="office"/>
+            <button type="submit" className="btn">
+                Search
+            </button>
+        </form>
+    </div>
   )
 }
 

@@ -3,9 +3,9 @@ import { createContext, useContext, useState } from "react";
 const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
-    const hello = 'hello'
+    
 
-    return <AppContext.Provider value={{ hello }}>
+    return <AppContext.Provider value={{  }}>
         {children}
     </AppContext.Provider>
 }
