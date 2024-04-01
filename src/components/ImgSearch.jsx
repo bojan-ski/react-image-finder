@@ -1,12 +1,18 @@
+import { useGlobalContext } from "../context"
+
 const ImgSearch = () => {
+    const { setSearchTerm } = useGlobalContext()
+
     const handleSubmit = e => {
         e.preventDefault()
 
-        const searchTerm = e.target.elements[0].value.trim()
+        const enteredValue = e.target.elements.search.value.trim()
 
-        if (!searchTerm) return
+        if (!enteredValue) return
 
-        console.log(searchTerm);
+        setSearchTerm(enteredValue);
+
+        e.target.elements.search.value = ''
     }
 
     return (

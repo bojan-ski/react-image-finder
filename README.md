@@ -1,1 +1,1 @@
-Checking out the Unsplash API
+Checking out (playing with) the Unsplash API
