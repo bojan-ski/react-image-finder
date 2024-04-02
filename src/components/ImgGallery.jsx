@@ -1,7 +1,7 @@
 import { useGlobalContext } from "../context"
 
 const ImgGallery = () => {
-  const { response } = useGlobalContext()
+  const { response, setTotalNumberOfPages } = useGlobalContext()
 
   if (response.isError) {
     console.log(response.error);
@@ -18,6 +18,7 @@ const ImgGallery = () => {
   }
 
   const results = response.data.results
+  setTotalNumberOfPages(response?.data?.total_pages);
 
   if (results.length < 1) {
     return <div>
@@ -29,7 +30,8 @@ const ImgGallery = () => {
     <div>
       {results.map(imageData => {
         const { id, urls, alt_description } = imageData
-        const url = urls.regular
+        // const url = urls.regular
+        const url = urls.small
 
         return <img key={id} src={url} alt={alt_description} />
       })}
