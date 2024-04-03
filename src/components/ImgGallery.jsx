@@ -1,7 +1,15 @@
+import { useState } from "react";
 import { useGlobalContext } from "../context"
+import Modal from "./Modal";
 
 const ImgGallery = () => {
-  const { response, setTotalNumberOfPages } = useGlobalContext()
+  const { response, setTotalNumberOfPages, toggleModal, setToggleModal } = useGlobalContext()
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageClick = (imageData) => {
+    setSelectedImage(imageData);
+    setToggleModal(true);
+  };
 
   if (response.isError) {
     console.log(response.error);
@@ -30,10 +38,16 @@ const ImgGallery = () => {
     <div>
       {results.map(imageData => {
         const { id, urls, alt_description } = imageData
-        // const url = urls.regular
-        const url = urls.small
 
-        return <img key={id} src={url} alt={alt_description} />
+        return (
+          <div key={id} >
+            <img src={urls.small} alt={alt_description} onClick={() => handleImageClick(imageData)}/>
+
+            {toggleModal && selectedImage && (
+              <Modal urlRegular={selectedImage.urls.regular} alt_description={selectedImage.alt_description}/>
+            )}
+          </div>
+        )
       })}
     </div>
   )
