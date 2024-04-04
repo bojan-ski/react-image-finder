@@ -5,33 +5,39 @@ const Pagination = () => {
     const { response, pageNumber, setPageNumber, totalNumberOfPages } = useGlobalContext()
     const availablePages = response?.data?.total_pages
 
-    if (!availablePages || availablePages <= 1 ) return
-    
+    if (!availablePages || availablePages <= 1) return
+
     return (
-        <div>
-            <button onClick={() => {
-                let prevPage = pageNumber - 1
+        <div className="section-pagination">
+            <div className="num-page">
+                <p>Pages: {pageNumber} / {totalNumberOfPages}</p>
+            </div>
 
-                if (prevPage < 1) {
-                    prevPage = totalNumberOfPages
-                }
-                setPageNumber(prevPage)
-            }}>
-                <HiChevronDoubleLeft />
-                Prev
-            </button>
+            <div className="btn-container">
+                <button className="btn btn-prev" onClick={() => {
+                    let prevPage = pageNumber - 1
 
-            <button onClick={() => {
-                let nextPage = pageNumber + 1
+                    if (prevPage < 1) {
+                        prevPage = totalNumberOfPages
+                    }
+                    setPageNumber(prevPage)
+                }}>
+                    <HiChevronDoubleLeft />
+                    Prev
+                </button>
 
-                if (nextPage > totalNumberOfPages) {
-                    nextPage = 1
-                }
-                setPageNumber(nextPage)
-            }}>
-                Next
-                <HiChevronDoubleRight />
-            </button>
+                <button className="btn btn-next" onClick={() => {
+                    let nextPage = pageNumber + 1
+
+                    if (nextPage > totalNumberOfPages) {
+                        nextPage = 1
+                    }
+                    setPageNumber(nextPage)
+                }}>
+                    Next
+                    <HiChevronDoubleRight />
+                </button>
+            </div>
         </div>
     )
 }

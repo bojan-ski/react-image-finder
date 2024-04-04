@@ -17,21 +17,20 @@ const ImgSearch = () => {
     }    
 
     return (
-        <div>
+        <section className="section-search">
             <h1>
                 Image - Images Finder
             </h1>
 
             <form className="search-form" onSubmit={handleSubmit}>
-                <input type="text" className="form-input" name="search" placeholder="Enter search term" />
-                <button type="submit" className="btn">
+                <input type="text" className="search-form-input" name="search" placeholder="Enter search term" />
+                <button type="submit" className="btn search-form-btn">
                     Search
                 </button>
             </form>
 
-            {searchResults ? <h2>Found images: {searchResults}</h2> : ''}
-            <h2></h2>
-        </div>
+            {searchResults ? <h3>Found images: {searchResults}</h3> : ''}
+        </section>
     )
 }
 

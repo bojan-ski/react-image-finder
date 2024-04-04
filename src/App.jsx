@@ -8,8 +8,11 @@ const App = () => {
     <AppProvider>     
         <>
           <ImgSearch />
-          <ImgGallery />
-          <Pagination />
+          
+          <div className="container">
+            <ImgGallery />
+            <Pagination />
+          </div>
         </>
     </AppProvider>
   )

@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 }
@@ -10,51 +13,200 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 100%;
+}
+
 body {
-  background-color: #eee;
+  background-color: #e2e0ff;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Pacifico", cursive;
+}
+
+/*--------------------------------*/
+h1 {
+  font-size: clamp(2rem, 5vw, 5rem); /* Large heading */
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 3rem); /* Medium heading */
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 2.5rem); /* Small heading */
+}
+
+h4 {
+  font-size: clamp(1rem, 2vw, 2rem); /* Extra small heading */
+}
+
+h5 {
+  font-size: clamp(0.875rem, 1.5vw, 1.5rem); /* Tiny heading */
+}
+
+/*--------------------------------*/
+
+.container{
+  width: 1200px;
+  margin: auto;
+}
+
+.btn{
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.btn:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn:active{
+  transform: scale(0.95);
+}
+
+/* SECTION SEARCH */
+.section-search{
+  text-align: center;
+  padding: 10px 0 20px;
+  margin-bottom: 20px;
+}
+
+.section-search .search-form{
+  margin: 10px 0;  
+}
+
+.section-search .search-form .search-form-input{
+  width: 40%;
+  padding: 12px 8px;
+  margin: 10px;
+  font-size: 16px;
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+}
+
+.section-search .search-form .search-form-btn{
+  background-color: #504acc;
+  color: #fff;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+}
+
+/* SECTION GALLERY */
+.section-gallery{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.section-gallery h4{
+  text-align: center;
+}
+
+.section-gallery .gallery-img{
+  background-color: #eee;
+  width: 32%;
+  height: 300px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.section-gallery .gallery-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #000;
+}
+
+/* SECTION PAGINATION */
+.section-pagination{
+  padding: 15px 10px;
+  display: flex;
   align-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: space-between;
+}
+
+.section-pagination .num-page{
+  font-family: "Pacifico", cursive;
+  font-weight: 500;
+}
+
+.section-pagination .btn-container{
+  display: flex;
+}
+
+.section-pagination .btn-container button{
+  background-color: #4aa7cc;
+  color: #fff;
+  font-size: 12px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.section-pagination .btn-container .btn-prev{
+  margin-right: 10px;
 }
 
 /* MODAL */
 .modal {
-  position: fixed; 
+  display: none;
+  position: fixed;
   z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%; 
-  background-color: rgba(0, 0, 0, 0.2);
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.18);
   padding-top: 150px;
 }
 
-/* Modal Content */
-.modal-content { 
+.modal-content {
   max-width: max-content;
-  margin: auto;  
+  margin: auto;
   background-color: #fefefe;
   padding: 20px;
-  border: 1px solid #888;
-  height: 70%;
-  width: 70%;
+  height: 80%;
+  width: 80%;
   display: flex;
   gap: 20px;
   overflow: hidden;
 }
 
-.modal-content .modal-img img{
-  display: block;
-  height: 100%;
+.modal-content .modal-img{
+  width: 75%;
 }
 
-/* The Close Button */
+.modal-content .modal-desc{
+  width: 25%;
+}
+
+.modal-content .modal-desc p{
+  margin-top: 10px;
+}
+
 .modal-content .modal-desc .close {
   display: block;
   color: #aaaaaa;
-  font-size: 28px;
+  font-size: 35px;
   font-weight: bold;
   text-align: end;
 }

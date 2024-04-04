@@ -3,7 +3,7 @@ import { useGlobalContext } from "../context"
 import Modal from "./Modal";
 
 const ImgGallery = () => {
-  const { response, setTotalNumberOfPages, toggleModal, setToggleModal } = useGlobalContext()
+  const { response, searchTerm, setTotalNumberOfPages, toggleModal, setToggleModal } = useGlobalContext()
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageClick = (imageData) => {
@@ -14,33 +14,33 @@ const ImgGallery = () => {
   if (response.isError) {
     console.log(response.error);
 
-    return <div>
+    return <section className="section-gallery">
       <h4>There was an error</h4>
-    </div>
+    </section>
   }
 
   if (response.isPending) {
-    return <div>
+    return <section className="section-gallery">
       <h4>Loading...</h4>
-    </div>
+    </section>
   }
 
-  const results = response.data.results
+  const results = response?.data?.results
   setTotalNumberOfPages(response?.data?.total_pages);
 
-  if (results.length < 1) {
-    return <div>
+  if (searchTerm && results.length === 0) {
+    return <section className="section-gallery">
       <h4>No Images Found</h4>
-    </div>
+    </section>
   }
 
   return (
-    <div>
+    <div className="section-gallery">
       {results.map(imageData => {
         const { id, urls, alt_description } = imageData
 
         return (
-          <div key={id} >
+          <div key={id} className="gallery-img">
             <img src={urls.small} alt={alt_description} onClick={() => handleImageClick(imageData)}/>
 
             {toggleModal && selectedImage && (
